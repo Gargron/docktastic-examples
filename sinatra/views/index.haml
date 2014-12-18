@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %title Basic Example Sinatra App
+  %body
+    %h1 Basic Example Sinatra App
+    %h3 Hostname
+    %p=@hostname
+    %h3 Environment variables:
+    %ul
+      - @env_vars.each do |index, value|
+        %li
+          %code=index
+          \:
+          %code=value

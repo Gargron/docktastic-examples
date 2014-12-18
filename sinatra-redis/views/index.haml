@@ -1,0 +1,26 @@
+!!! 5
+%html
+  %head
+    %title Example Sinatra App with Redis
+  %body
+    %h1 Example Sinatra App with Redis
+    %form{method: 'post', action: '/set'}
+      %input{type: 'text', name: 'key'}
+      %input{type: 'text', name: 'value'}
+      %button{type: 'submit'} Set
+    %h3 Contents
+    %ul
+      - @entries.each do |key, value|
+        %li
+          %code=key
+          \:
+          %code=value
+    %h3 Hostname
+    %p=@hostname
+    %h3 Environment variables:
+    %ul
+      - @env_vars.each do |index, value|
+        %li
+          %code=index
+          \:
+          %code=value

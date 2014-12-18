@@ -1,0 +1,31 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    awesome_print (1.0.2)
+    haml (3.1.7)
+    kgio (2.9.2)
+    rack (1.4.1)
+    rack-protection (1.2.0)
+      rack
+    raindrops (0.13.0)
+    shotgun (0.9)
+      rack (>= 1.0)
+    sinatra (1.3.3)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    tilt (1.3.3)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  haml
+  shotgun
+  sinatra
+  unicorn

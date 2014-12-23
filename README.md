@@ -38,7 +38,7 @@ bin/tastic create redis-slave tastic/redis -p 8010:6379 -e \
   SLAVEOF_PORT_6379_TCP_ADDR=redis-master \
   SLAVEOF_PORT_6379_TCP_PORT=8000
 
-bin/tastic create sinatra-app tastic/sinatra-redis -p 3000 -e \
+bin/tastic create sinatra-app tastic/sinatra-redis -r -p 3000 -e \
   REDIS_WRITE_PORT_6379_TCP_ADDR=redis-master \
   REDIS_WRITE_PORT_6379_TCP_PORT=8000 \
   REDIS_READ_PORT_6379_TCP_ADDR=redis-slave \
@@ -46,7 +46,11 @@ bin/tastic create sinatra-app tastic/sinatra-redis -p 3000 -e \
 ~~~
 
 As you see, we refer to the dependent services by name. The Consul DNS service running in the background will match
-the names to the correct containers while load-balancing. The `-p` argument determines the mapping between the container port (6379) and the host port (in our case, different host ports for master and slave, due to us having only one node to work with).
+the names to the correct containers while load-balancing.
+
+The `-p` argument determines the mapping between the container port (6379) and the host port (in our case, different host ports for master and slave, due to us having only one node to work with).
+
+The `-e` argument lets us define environment variables for the container, and the `-r` flag on the sinatra service tells Docktastic to create a route to the service from the HTTP proxy.
 
 The last step is making Docktastic run these services on the cluster:
 

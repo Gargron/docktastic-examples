@@ -1,4 +1,4 @@
-FROM ruby:2.1-onbuild
+FROM cloudgear/ruby:2.2-onbuild
 MAINTAINER Eugen Rochko <eugen@zeonfederated.com>
 
 EXPOSE 3000

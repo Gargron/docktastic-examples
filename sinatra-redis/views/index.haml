@@ -1,26 +1,49 @@
 !!! 5
 %html
   %head
+    %meta{charset: 'utf-8'}/
+    %meta{http_equiv: 'X-UA-Compatible', content: 'IE=edge'}/
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}/
     %title Example Sinatra App with Redis
+    %link{rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'}/
+    %link{rel: 'stylesheet', href: '/css/app.css'}/
+
   %body
-    %h1 Example Sinatra App with Redis
-    %form{method: 'post', action: '/set'}
-      %input{type: 'text', name: 'key'}
-      %input{type: 'text', name: 'value'}
-      %button{type: 'submit'} Set
-    %h3 Contents
-    %ul
-      - @entries.each do |key, value|
-        %li
-          %code=key
-          \:
-          %code=value
-    %h3 Hostname
-    %p=@hostname
-    %h3 Environment variables:
-    %ul
-      - @env_vars.each do |index, value|
-        %li
-          %code=index
-          \:
-          %code=value
+    .container
+      .header
+        %nav
+          %ul.nav.nav-pills.pull-right
+            %li.active{role: 'presentation'}
+              %a{href: '/'} Info
+            %li{role: 'presentation'}
+              %a{href: 'http://www.cloudgear.co'} Cloudgear
+        %h3
+          %img{src: '/img/logo-solo.png', alt: 'Cloudgear Demo App'}/
+
+      %form{method: 'post', action: '/set'}
+        %input{type: 'text', name: 'key'}
+        %input{type: 'text', name: 'value'}
+        %button{type: 'submit'} Set
+
+      %h3 Contents
+      %ul
+        - @entries.each do |key, value|
+          %li
+            %code=key
+            \:
+            %code=value
+
+      %h3 Hostname
+      %p
+        %b=@hostname
+
+      %h3 Environment variables:
+      %ul
+        - @env_vars.each do |index, value|
+          %li
+            %code=index
+            \:
+            %code=value
+
+      %footer.footer
+        %p &copy; Cloudgear 2015
